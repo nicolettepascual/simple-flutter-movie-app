@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_movie_app/screens/latest_movies_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
@@ -15,16 +16,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-             Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
-      ),
+      body: const LatestMovies(),
     );
   }
 }

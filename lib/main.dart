@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:simple_movie_app/configs/config_env.dart';
 import 'package:simple_movie_app/screens/home_screen.dart';
 
 void main() {
+  Config.loadConfig();
   runApp(const MyApp());
 }
 
