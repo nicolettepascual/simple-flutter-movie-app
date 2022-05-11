@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_movie_app/screens/latest_movies_screen.dart';
+import 'package:simple_movie_app/screens/popular_movies_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key, required this.title}) : super(key: key);
@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: const LatestMovies(),
+      body: const PopularMovies(),
     );
   }
 }

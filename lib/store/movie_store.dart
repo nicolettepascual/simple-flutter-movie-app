@@ -12,8 +12,14 @@ abstract class _MovieStore with Store {
   @observable
   ObservableFuture<List<Movie>>? movieListFuture;
 
+  @observable
+  ObservableFuture<Movie>? movieFuture;
+
   @action
-  Future fetchPopularMovies() => movieListFuture = ObservableFuture(httpClient
-      .getPopularMovies()
-      .then((popularMovies) => popularMovies));
+  Future fetchPopularMovies() => movieListFuture = ObservableFuture(
+      httpClient.getPopularMovies().then((popularMovies) => popularMovies));
+
+  @action
+  Future fetchMovie(int movieId) =>
+      movieFuture = ObservableFuture(httpClient.getMovie(movieId).then((movie) => movie));
 }

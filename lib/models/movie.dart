@@ -4,8 +4,7 @@ class Movie {
   late String overview;
   late String poster;
   late String releaseDate;
-  // late String status;
-  // late List<String> genres;
+  late String backdrop;
 
   Movie(
       {required this.id,
@@ -13,18 +12,16 @@ class Movie {
       required this.overview,
       required this.poster,
       required this.releaseDate,
-      // required this.status,
-      // required this.genre
+      required this.backdrop
       });
 
-  Movie.fromJson(Map<String, dynamic> json) {
+  Movie.fromJson(Map<dynamic, dynamic> json) {
     id = json['id'] as int;
     title = json['title'] as String;
     overview = json['overview'] as String;
     poster = json['poster_path'] as String;
     releaseDate = json['release_date'] as String;
-    // status = json['status'] as String;
-    // genres = json['genres'] as List<String>;
+    backdrop = json['backdrop_path'] as String;
   }
 
   Map<String, dynamic> toJson() {
@@ -34,8 +31,7 @@ class Movie {
     data['overview'] = overview;
     data['poster'] = poster;
     data['releaseDate'] = releaseDate;
-    // data['status'] = status;
-    // data['genres'] = genres;
+    data['backdrop_path'] = backdrop;
 
     return data;
   }

@@ -24,7 +24,7 @@ class RetryWidget extends HookWidget {
           ),
           ElevatedButton(
             child: const Text('Tap to retry'),
-            onPressed: onRetry(),
+            onPressed: () => onRetry(),
           )
         ],
       ),

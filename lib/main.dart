@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:simple_movie_app/configs/config_env.dart';
 import 'package:simple_movie_app/screens/home_screen.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Movies App',
       theme: ThemeData(
         primarySwatch: Colors.blue,

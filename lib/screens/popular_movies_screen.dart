@@ -8,14 +8,14 @@ import 'package:simple_movie_app/widgets/loading_widget.dart';
 import 'package:simple_movie_app/widgets/movie_list_widget.dart';
 import 'package:simple_movie_app/widgets/retry_widget.dart';
 
-class LatestMovies extends StatefulHookWidget {
-  const LatestMovies({Key? key}) : super(key: key);
+class PopularMovies extends StatefulHookWidget {
+  const PopularMovies({Key? key}) : super(key: key);
 
   @override
-  State<LatestMovies> createState() => _LatestMoviesState();
+  State<PopularMovies> createState() => _PopularMoviesState();
 }
 
-class _LatestMoviesState extends State<LatestMovies> {
+class _PopularMoviesState extends State<PopularMovies> {
   MovieStore moviesStore = MovieStore();
   ObservableFuture<List<Movie>>? future;
 

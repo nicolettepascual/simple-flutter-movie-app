@@ -30,7 +30,17 @@ class ApiClient {
     final response = await _get(endpoint);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      debugPrint('Data: $data');
+      return data;
+    } else {
+      debugPrint("Error in URL");
+    }
+  }
+
+  Future getMovie(String endpoint) async {
+    final response = await _get(endpoint);
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      debugPrint('Movie: $data');
       return data;
     } else {
       debugPrint("Error in URL");
