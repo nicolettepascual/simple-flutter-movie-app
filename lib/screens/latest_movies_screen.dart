@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:simple_movie_app/models/movie.dart';
 import 'package:simple_movie_app/store/movie_store.dart';
 
-class LatestMovies extends StatefulWidget {
+class LatestMovies extends StatefulHookWidget {
   const LatestMovies({Key? key}) : super(key: key);
 
   @override
@@ -18,13 +19,13 @@ class _LatestMoviesState extends State<LatestMovies> {
   @override
   void initState() {
     super.initState();
-    moviesStore.getMovies();
+    moviesStore.fetchPopularMovies();
     future = moviesStore.movieListFuture;
   }
 
   @override
   Widget build(BuildContext context) {
-
+    /** TODO: Create separate reusable widget */
     return Observer(
       builder: (_) {
         switch (future?.status) {
@@ -53,30 +54,29 @@ class _LatestMoviesState extends State<LatestMovies> {
               ),
             );
           case FutureStatus.fulfilled:
-            final List<Movie> posts = future?.result;
-            print(posts);
+            final List<Movie> latestMovies = future?.result;
             return RefreshIndicator(
               onRefresh: _refresh,
               child: ListView.builder(
                 physics: const AlwaysScrollableScrollPhysics(),
-                itemCount: posts.length,
+                itemCount: latestMovies.length,
                 itemBuilder: (context, index) {
-                  final post = posts[index];
+                  final latestMovie = latestMovies[index];
                   return ExpansionTile(
                     title: Text(
-                      post.title,
+                      latestMovie.title,
                       style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
-                    children: <Widget>[Text(post.title)],
+                    children: <Widget>[Text(latestMovie.overview)],
                   );
                 },
               ),
             );
+          default: return Container();
         }
-        return Container();
       },
     );
   }
 
-  Future _refresh() => moviesStore.fetchMovies();
+  Future _refresh() => moviesStore.fetchPopularMovies();
 }
