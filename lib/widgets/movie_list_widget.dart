@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:simple_movie_app/models/movie.dart';
+import 'package:simple_movie_app/widgets/movie_poster_widget.dart';
 
 class MovieListWidget extends StatefulHookWidget {
   final List<Movie> movies;
@@ -19,20 +20,14 @@ class _MovieListWidgetState extends State<MovieListWidget> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () => widget.onRefresh(),
-      child: ListView.builder(
-        physics: const AlwaysScrollableScrollPhysics(),
-        itemCount: widget.movies.length,
-        itemBuilder: (context, index) {
-          final latestMovie = widget.movies[index];
-          return ExpansionTile(
-            title: Text(
-              latestMovie.title,
-              style: const TextStyle(fontWeight: FontWeight.w600),
-            ),
-            children: <Widget>[Text(latestMovie.overview)],
-          );
-        },
-      ),
+      child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, childAspectRatio: 0.6),
+          itemCount: widget.movies.length,
+          itemBuilder: (context, index) {
+            final latestMovie = widget.movies[index];
+            return GridTile(child: MoviePosterWidget(latestMovie));
+          }),
     );
   }
 }

@@ -3,4 +3,5 @@
 final Map<String, String> debugEnv = <String, String>{
   'SERVER_URL': 'api.themoviedb.org',
   'API_TOKEN': 'insert_TMDB_token_here',
+  'POSTER_URL': 'https://image.tmdb.org/t/p/w300/'
 };

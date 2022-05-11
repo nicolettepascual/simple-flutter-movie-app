@@ -9,6 +9,7 @@ import 'package:simple_movie_app/configs/debug_env.dart';
 class Config {
   static const String SERVER_URL = 'SERVER_URL';
   static const String API_TOKEN = 'API_TOKEN';
+  static const String POSTER_URL = 'POSTER_URL';
 
   static void loadConfig() {
     GlobalConfiguration().loadFromMap(debugEnv);
